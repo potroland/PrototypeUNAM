@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIARE UNAM - Trayectoria Integrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azul-unam: #002147;
+            --azul-nav: #1a365d;
+            --azul-claro: #003366;
+            --dorado: #d4af37;
+            --gris-claro: #f0f0f0;
+            --fuente: 'Montserrat', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body, html {
+            height: 100%; width: 100%;
+            font-family: var(--fuente);
+            background-color: var(--gris-claro);
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--azul-unam);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 10%;
+            padding: 0 2%;
+            border-bottom: 2px solid var(--dorado);
+        }
+        
+        .header-left { width: 35%; display: flex; align-items: center; }
+        .header-left img { height: 75px; width: auto; margin-left: 130px; }
+        .header-center { line-height: 1.2; flex: 1; text-align: center; }
+        .header-center p { font-size: 0.65vw; font-weight: 400; margin-bottom: 2px; }
+        .header-right { display: flex; align-items: center; gap: 30px; width: 25%; justify-content: flex-start; padding-left: 20px; }
+
+        .imgdgasiare img {
+            height: 65px;
+            width: auto;
+            display: block;
+        }
+
+        /* --- BARRA DE USUARIO --- */
+        .user-bar {
+            background-color: var(--azul-nav);
+            color: white;
+            height: 3%;
+            display: flex;
+            align-items: center;
+            padding: 0 2%;
+            font-size: 0.8vw; 
+            gap: 1.0vw;
+        }
+        .user-icons { display: flex; gap: 1vw; align-items: center; font-size: 0.8vw; }
+        .user-custom-icon { height: 1.0vw; width: auto; filter: brightness(0) invert(1); }
+
+        /* --- CUERPO --- */
+        .wrapper { display: flex; min-height: 87%; }
+
+        aside {
+            width: 12%; 
+            background-color: #e0e0e0;
+            border-right: 1px solid #bbb;
+            padding: 0.8vw 0.5vw;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .unam-side { 
+            flex-grow: 1; 
+            display: flex;
+            align-items: center; 
+            justify-content: center;
+            overflow: visible; 
+        }
+
+        .unam-side img {
+            width: 110%; 
+            max-width: 160px; 
+            height: auto;
+            opacity: 0.9;
+            transform: translateY(-50px); 
+        }
+
+        .menu-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #000;
+            font-size: 0.7vw; 
+            font-weight: 700;
+            padding: 0.15vw 0;
+            cursor: pointer;
+        }
+
+        .menu-link-secondary {
+            display: block;
+            text-decoration: none;
+            color: #000;
+            font-size: 0.65vw; 
+            font-weight: 400;
+            padding: 0.15vw 0;
+            cursor: pointer;
+            padding-left: 13px;
+        }
+
+        .triangle {
+            width: 0; height: 0;
+            border-top: 3px solid transparent;
+            border-bottom: 3px solid transparent;
+            border-left: 5px solid var(--dorado);
+            margin-right: 8px;
+        }
+
+        /* --- MAIN --- */
+        main {
+            flex: 1;
+            background: #fff;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .content-header {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .shield-section { 
+            display: flex; 
+            gap: 0px; 
+            align-items: center; 
+        }
+        
+        .shield-section img { 
+            height: 80px; 
+            margin-right: 5px;
+        }
+
+        .shield-text { 
+            font-size: 9px; 
+            text-transform: uppercase; 
+            font-weight: bold; 
+            color: #374151; 
+            line-height: 1.3;
+            text-align: left;
+        }
+
+        .main-title { font-size: 18px; font-weight: bold; margin-bottom: 5px; color: #000; }
+        .date-text { width: 100%; max-width: 900px; text-align: right; font-size: 10px; margin-bottom: 15px; }
+
+        .student-section {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .photo-box { 
+            border: 2px solid black; 
+            padding: 0; 
+            background-color: white;
+            display: flex;
+            width: 114px; 
+            height: 144px; 
+        }
+        
+        .photo-box img { 
+            width: 110px; 
+            height: 140px; 
+            object-fit: cover; 
+            display: block;
+        }
+
+        .info-details { 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-end;
+            flex: 1; 
+        }
+
+        .info-datos {
+            margin-bottom: -60px;
+            width: 230px;
+        }
+        
+        .info-row { 
+            display: flex; 
+            margin-bottom: -1px; 
+            width: 100%; 
+        }
+        
+        .info-label {
+            background-color: var(--azul-unam);
+            color: white;
+            padding: 3px 5px;
+            width: 70px;
+            border: 1px solid black;
+            font-size: 9px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-value {
+            background-color: white;
+            padding: 4px 8px;
+            border: 1px solid black;
+            flex: 1;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+
+        .info-ecosistem {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            width: 100%; 
+        }
+
+        .eco-btn {
+            background-color: var(--azul-claro);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 8px 8px 0 0;
+            font-weight: bold;
+            border: 1px solid black;
+            border-bottom: none;
+            cursor: pointer;
+            font-size: 10px;
+            margin-left: 400px; 
+            margin-bottom: -20px;
+        }
+
+        .table-container { width: 100%; max-width: 900px; overflow-x: auto; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid black;
+            text-align: center;
+            font-size: 9px;
+        }
+        thead tr { background-color: var(--azul-claro); color: white; }
+        th, td { border: 1px solid black; padding: 5px; }
+        .level-row { background-color: #bfdbfe; font-weight: bold; }
+        .description-row { background-color: #f3f4f6; text-align: left; }
+
+        .controls {
+            width: 100%;
+            max-width: 900px;
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        select, .consult-btn {
+            border: 1px solid #9ca3af;
+            padding: 3px 10px;
+            font-size: 10px;
+            background-color: white;
+            cursor: pointer;
+        }
+        .consult-btn:hover { background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <img src="logoUnam.png" alt="Escudo UNAM">
+        </div>
+        <div class="header-center">
+            <p>Universidad Nacional Autónoma de México</p>
+            <p>Dirección General de Administración Escolar</p>
+            <p>Subdirección de Sistemas de Registro Escolar</p>
+            <p>Sistema Integral de Administración Escolar</p>
+        </div>
+        <div class="header-right">
+            <div class="imgdgasiare">
+                <img src="DGAESIARE.png" alt="DGAE SIARE">
+            </div>
+        </div>
+    </header>
+
+    <div class="user-bar">
+        <div class="user-icons">
+            <img src="printer-svgrepo-com.svg" class="user-custom-icon" alt="Imprimir">
+            <span style="color:#fff">❮ &nbsp;&nbsp; ❯</span>
+            <span style="color:#ff0000">❤</span>
+            <img src="user-svgrepo-com.svg" class="user-custom-icon" alt="Usuario">
+        </div>
+        <span>Torres Nava Miranda</span>
+    </div>
+
+    <div class="wrapper">
+        <aside>
+            <nav>
+                <div class="menu-link"><div class="triangle"></div> Registros Académicos</div>
+                <div class="menu-link-secondary" style="font-weight: 600; background: #d1d5db;">Trayectoria Escolar</div>
+                <div class="menu-link"><div class="triangle"></div> Trámites Escolares</div>
+                <div class="menu-link"><div class="triangle"></div> Seguridad</div>
+                <div class="menu-link"><div class="triangle"></div> Elecciones</div>
+                <div class="menu-link-secondary" style="margin-top: 10px;">Imprimir</div>
+                <div class="menu-link-secondary">Cerrar Sesión</div>
+            </nav>
+            <div class="unam-side">
+                <img src="UNAM.png" alt="Escudo UNAM Lateral">
+            </div>
+        </aside>
+
+        <main>
+            <div class="content-header">
+                <div class="shield-section">
+                    <img src="logoSecundario.png" alt="Escudo">
+                    <div class="shield-text">
+                        <h3>Universidad Nacional Autónoma de México</h3>
+                        <p>Secretaría General</p>
+                        <p>Dirección General de Administración Escolar</p>
+                        <p>Subdirección de Sistemas de Registro Escolar</p>
+                        <p>Sistema Integral de Administración Escolar</p>
+                    </div>
+                </div>
+                <div class="imgdgasiare" style="display: flex; align-items: center; gap: 10px;">
+                    <img src="DGAESIARE.png" alt="DGAE SIARE">
+                </div>
+            </div>
+
+            <h1 class="main-title">Trayectoria Académica</h1>
+            <p class="date-text" id="current-date"></p>
+
+            <div class="student-section">
+                <div class="photo-box">
+                    <img src="alumno.png" alt="Estudiante">
+                </div>
+                <div class="info-details">
+                    <div class="info-datos">
+                        <div class="info-row">
+                            <div class="info-label">CUENTA</div>
+                            <div class="info-value">325220204</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">NOMBRE</div>
+                            <div class="info-value">TORRES NAVA MIRANDA</div>
+                        </div>
+                    </div>
+                    <div class="info-ecosistem">
+                        <button class="eco-btn">Ecosistema UNAM ▼</button>
+                        <div style="text-align: center;">
+                            <span style="background: #b91c1c; color: white; font-size: 8px; padding: 2px 8px; border-radius: 99px;">¡Aviso Importante!</span><br>
+                            <img src="IMSS.png" alt="IMSS" style="height: 35px; margin-top: 4px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>PLANTEL</th>
+                            <th>CARRERA</th>
+                            <th>TURNO</th>
+                            <th>PLAN DE ESTUDIO</th>
+                            <th>NOMBRE DEL PLAN</th>
+                            <th>GEN.</th>
+                            <th>ING.</th>
+                            <th>TERM.</th>
+                            <th>ART. 22</th>
+                            <th>ART. 24</th>
+                            <th>ART. 21</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="level-row"><td colspan="12">NIVEL: BACHILLERATO</td></tr>
+                        <tr>
+                            <td><input type="radio" checked></td>
+                            <td>0031</td>
+                            <td></td>
+                            <td>01</td>
+                            <td>2273</td>
+                            <td style="text-align: left;">CCH BACHILLERATO</td>
+                            <td>2025</td>
+                            <td>52</td>
+                            <td></td>
+                            <td>2029-1</td>
+                            <td>2031-1</td>
+                            <td>2028-1</td>
+                        </tr>
+                        <tr class="description-row">
+                            <td colspan="12">INGRESO [52]: INGRESO A BACHILLERATO (ENP / CCH) (CONCURSO DE SELECCION)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="controls">
+                <select>
+                    <option>Historia Académica</option>
+                </select>
+                <button class="consult-btn" onclick="window.location.href='calificaciones.html'">Consultar</button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function actualizarFecha() {
+            const fecha = new Date();
+            const opciones = { day: '2-digit', month: 'long', year: 'numeric' };
+            let fechaFormateada = fecha.toLocaleDateString('es-ES', opciones);
+            
+            // Capitalizar la primera letra del mes
+            fechaFormateada = fechaFormateada.replace(/([a-z]+)/gi, (match) => {
+                return match.charAt(0).toUpperCase() + match.substr(1);
+            });
+
+            document.getElementById('current-date').textContent = fechaFormateada;
+        }
+        actualizarFecha();
+    </script>
+</body>
+</html>

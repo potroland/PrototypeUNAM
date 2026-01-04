@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIARE UNAM - Interfaz Fiel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azul-unam: #002147;
+            --azul-nav: #1a365d;
+            --dorado: #d4af37;
+            --gris-claro: #f0f0f0;
+            --fuente: 'Montserrat', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body, html {
+            height: 100%; width: 100%;
+            font-family: var(--fuente);
+            background-color: var(--gris-claro);
+            overflow: hidden;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--azul-unam);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 10%;
+            padding: 0 2%;
+            border-bottom: 2px solid var(--dorado);
+        }
+        
+        .header-left { width: 35%; display: flex; align-items: center; }
+        .header-left img { height: 75px; width: auto; margin-left: 130px; }
+        .header-center { line-height: 1.2; flex: 1; text-align: center; }
+        .header-center p { font-size: 0.65vw; font-weight: 400; margin-bottom: 2px; }
+        .header-right { display: flex; align-items: center; gap: 30px; width: 25%; justify-content: flex-start; padding-left: 20px; }
+        .logo-der { height: 60px; width: auto; }
+
+        /* --- BARRA DE USUARIO --- */
+        .user-bar {
+            background-color: var(--azul-nav);
+            color: white;
+            height: 3%;
+            display: flex;
+            align-items: center;
+            padding: 0 2%;
+            font-size: 0.8vw; 
+            gap: 1.0vw;
+        }
+        .user-icons { display: flex; gap: 1vw; align-items: center; font-size: 0.8vw; }
+        .user-custom-icon { height: 1.0vw; width: auto; filter: brightness(0) invert(1); }
+
+        /* --- CUERPO --- */
+        .wrapper { display: flex; height: 87%; }
+
+        aside {
+            width: 12%; 
+            background-color: #e0e0e0;
+            border-right: 1px solid #bbb;
+            padding: 0.8vw 0.5vw;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- AJUSTE UNAM-SIDE (POSICIÓN Y TAMAÑO) --- */
+        .unam-side { 
+            flex-grow: 1; 
+            display: flex;
+            align-items: center; 
+            justify-content: center;
+            /* Aseguramos que el contenido que sube no se oculte */
+            overflow: visible; 
+        }
+
+        .unam-side img {
+            width: 110%; 
+            max-width: 160px; 
+            height: auto;
+            opacity: 0.9;
+            /* Movemos la imagen 50px hacia arriba */
+            transform: translateY(-100px); 
+        }
+
+        .menu-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #000;
+            font-size: 0.7vw; 
+            font-weight: 700;
+            padding: 0.15vw 0;
+            cursor: pointer;
+        }
+
+        .menu-link-secondary {
+            display: block;
+            text-decoration: none;
+            color: #000;
+            font-size: 0.65vw; 
+            font-weight: 400;
+            padding: 0.15vw 0;
+            cursor: pointer;
+            padding-left: 13px;
+        }
+
+        .triangle {
+            width: 0; height: 0;
+            border-top: 3px solid transparent;
+            border-bottom: 3px solid transparent;
+            border-left: 5px solid var(--dorado);
+            margin-right: 8px;
+            transition: transform 0.2s;
+        }
+        .active .triangle { transform: rotate(90deg); }
+
+        #submenu-trayectoria { display: none; list-style: none; padding-left: 18px; margin-bottom: 3px; }
+        #submenu-trayectoria.show { display: block; }
+        .submenu-link { text-decoration: none; color: #333; font-size: 0.65vw; font-weight: 600; display: block; padding: 1px 0; }
+
+        /* --- MAIN --- */
+        main {
+            flex: 1;
+            background: #fff;
+            display: flex; 
+            justify-content: center; 
+            align-items: flex-start; 
+            padding-top: 5vh; 
+            background-image: url('logoUnam.png'); 
+            background-repeat: no-repeat; 
+            background-position: center;
+            background-size: 30%; 
+            background-blend-mode: soft-light;
+        }
+
+        .banner-image-container {
+            width: 80%; 
+            max-width: 700px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid #ccc;
+            line-height: 0;
+        }
+
+        .banner-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <img src="logoUnam.png" alt="Escudo UNAM">
+        </div>
+        <div class="header-center">
+            <p>Universidad Nacional Autónoma de México</p>
+            <p>Dirección General de Administración Escolar</p>
+            <p>Subdirección de Sistemas de Registro Escolar</p>
+            <p>Sistema Integral de Administración Escolar</p>
+        </div>
+        <div class="header-right">
+            <img src="logoDgae.png" class="logo-der" alt="DGAE">
+            <img src="logoSiare.png" class="logo-der" alt="SIARE">
+        </div>
+    </header>
+
+    <div class="user-bar">
+        <div class="user-icons">
+            <img src="printer-svgrepo-com.svg" class="user-custom-icon" alt="Imprimir">
+            <span style="color:#fff">❮ &nbsp;&nbsp;  ❯</span>
+            <span style="color:#ff0000">❤</span>
+            <img src="user-svgrepo-com.svg" class="user-custom-icon" alt="Usuario">
+        </div>
+        <span>Torres Nava Miranda</span>
+    </div>
+
+    <div class="wrapper">
+        <aside>
+            <nav>
+                <div onclick="toggleSubmenu(this)">
+                    <div class="menu-link">
+                        <div class="triangle"></div> Registros Académicos
+                    </div>
+                    <ul id="submenu-trayectoria">
+                        <li><a href="trayectoria.html" class="submenu-link">Trayectoria Escolar</a></li>
+                    </ul>
+                </div>
+                <div class="menu-link"><div class="triangle"></div> Trámites Escolares</div>
+                <div class="menu-link"><div class="triangle"></div> Seguridad</div>
+                <div class="menu-link"><div class="triangle"></div> Elecciones</div>
+                <div class="menu-link-secondary" style="margin-top: 5px;">Imprimir</div>
+                <div class="menu-link-secondary">Cerrar Sesión</div>
+            </nav>
+
+            <div class="unam-side">
+                <img src="UNAM.png" alt="Escudo UNAM Lateral">
+            </div>
+        </aside>
+
+        <main>
+            <div class="banner-image-container">
+                <img src="tu-imagen-banner.png" alt="Banner Informativo UNAM">
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleSubmenu(element) {
+            const submenu = document.getElementById('submenu-trayectoria');
+            submenu.classList.toggle('show');
+            element.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
