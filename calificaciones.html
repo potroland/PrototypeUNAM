@@ -75,13 +75,12 @@
             overflow-y: auto;
         }
 
-        /* AJUSTE PARA CENTRADO VERTICAL */
         .unam-side { 
-            flex-grow: 1; /* Ocupa el espacio disponible */
+            flex-grow: 1; 
             display: flex;
-            align-items: center; /* Centra horizontalmente la imagen */
+            align-items: center;
             justify-content: center;
-            margin: auto 0; /* Centra verticalmente en el espacio sobrante */
+            margin: auto 0;
         }
 
         .unam-side img {
@@ -292,7 +291,7 @@
                     <p>(Documento no Oficial)</p>
                 </div>
 
-                <div class="current-date">03 Enero 2026</div>
+                <div class="current-date" id="date-display">Cargando fecha...</div>
 
                 <div class="info-border-wrapper">
                     <div class="student-info-box">
@@ -428,5 +427,31 @@
             </div>
         </main>
     </div>
+
+    <script>
+        function updateDate() {
+            const dateElement = document.getElementById('date-display');
+            const now = new Date();
+            
+            // Opciones para el formato de fecha (Día Mes Año)
+            const options = { day: '2-digit', month: 'long', year: 'numeric' };
+            
+            // Obtener la fecha en español y formatear el mes con mayúscula
+            let formattedDate = now.toLocaleDateString('es-MX', options);
+            
+            // Hacer que la primera letra del mes sea mayúscula (ej: enero -> Enero)
+            formattedDate = formattedDate.replace(/\b[a-z]/, (match) => match.toUpperCase());
+            
+            // Quitar el "de" que a veces agrega el formato local para que se vea igual al diseño original
+            // Ej: "03 de Enero de 2026" -> "03 Enero 2026"
+            formattedDate = formattedDate.replace(/ de /g, ' ');
+
+            dateElement.textContent = formattedDate;
+        }
+
+        // Ejecutar la función al cargar la página
+        updateDate();
+    </script>
+
 </body>
 </html>
