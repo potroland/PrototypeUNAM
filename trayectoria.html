@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIARE UNAM - Trayectoria Integrada</title>
+    <title>SIARE UNAM - Trayectoria Integrada Responsiva</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -31,47 +31,45 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 10%;
+            height: clamp(60px, 10vh, 100px);
             padding: 0 2%;
             border-bottom: 2px solid var(--dorado);
         }
         
-        .header-left { width: 35%; display: flex; align-items: center; }
-        .header-left img { height: 75px; width: auto; margin-left: 130px; }
+        .header-left { width: 30%; display: flex; align-items: center; }
+        .header-left img { height: clamp(40px, 7vh, 75px); width: auto; margin-left: clamp(10px, 8vw, 130px); }
+        
         .header-center { line-height: 1.2; flex: 1; text-align: center; }
-        .header-center p { font-size: 0.65vw; font-weight: 400; margin-bottom: 2px; }
-        .header-right { display: flex; align-items: center; gap: 30px; width: 25%; justify-content: flex-start; padding-left: 20px; }
-
-        .imgdgasiare img {
-            height: 65px;
-            width: auto;
-            display: block;
-        }
+        .header-center p { font-size: clamp(8px, 0.65vw, 12px); font-weight: 400; margin-bottom: 2px; }
+        
+        .header-right { display: flex; align-items: center; gap: 2vw; width: 25%; justify-content: flex-start; padding-left: 20px; }
+        .imgdgasiare img { height: clamp(35px, 6vh, 65px); width: auto; display: block; }
 
         /* --- BARRA DE USUARIO --- */
         .user-bar {
             background-color: var(--azul-nav);
             color: white;
-            height: 3%;
+            height: clamp(25px, 3vh, 40px);
             display: flex;
             align-items: center;
             padding: 0 2%;
-            font-size: 0.8vw; 
-            gap: 1.0vw;
+            font-size: clamp(9px, 0.8vw, 14px); 
+            gap: 1.5vw;
         }
-        .user-icons { display: flex; gap: 1vw; align-items: center; font-size: 0.8vw; }
-        .user-custom-icon { height: 1.0vw; width: auto; filter: brightness(0) invert(1); }
+        .user-icons { display: flex; gap: 1vw; align-items: center; }
+        .user-custom-icon { height: clamp(12px, 1vw, 18px); width: auto; filter: brightness(0) invert(1); }
 
         /* --- CUERPO --- */
         .wrapper { display: flex; min-height: 87%; }
 
         aside {
-            width: 12%; 
+            width: clamp(100px, 12%, 180px); 
             background-color: #e0e0e0;
             border-right: 1px solid #bbb;
-            padding: 0.8vw 0.5vw;
+            padding: 1vw 0.5vw;
             display: flex;
             flex-direction: column;
+            flex-shrink: 0;
         }
 
         .unam-side { 
@@ -79,15 +77,14 @@
             display: flex;
             align-items: center; 
             justify-content: center;
-            overflow: visible; 
         }
 
         .unam-side img {
-            width: 110%; 
+            width: 90%; 
             max-width: 160px; 
             height: auto;
             opacity: 0.9;
-            transform: translateY(-50px); 
+            transform: translateY(-2vh); 
         }
 
         .menu-link {
@@ -95,9 +92,9 @@
             align-items: center;
             text-decoration: none;
             color: #000;
-            font-size: 0.7vw; 
+            font-size: clamp(9px, 0.7vw, 13px); 
             font-weight: 700;
-            padding: 0.15vw 0;
+            padding: 0.4vw 0;
             cursor: pointer;
         }
 
@@ -105,11 +102,10 @@
             display: block;
             text-decoration: none;
             color: #000;
-            font-size: 0.65vw; 
+            font-size: clamp(8px, 0.65vw, 12px); 
             font-weight: 400;
-            padding: 0.15vw 0;
+            padding: 0.3vw 0 0.3vw 10px;
             cursor: pointer;
-            padding-left: 13px;
         }
 
         .triangle {
@@ -117,14 +113,14 @@
             border-top: 3px solid transparent;
             border-bottom: 3px solid transparent;
             border-left: 5px solid var(--dorado);
-            margin-right: 8px;
+            margin-right: 5px;
         }
 
         /* --- MAIN --- */
         main {
             flex: 1;
             background: #fff;
-            padding: 20px;
+            padding: clamp(10px, 2vw, 20px);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -136,55 +132,38 @@
             max-width: 900px;
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px;
+            margin-bottom: 2vh;
         }
 
-        .shield-section { 
-            display: flex; 
-            gap: 0px; 
-            align-items: center; 
-        }
-        
-        .shield-section img { 
-            height: 80px; 
-            margin-right: 5px;
-        }
+        .shield-section { display: flex; gap: 5px; align-items: center; }
+        .shield-section img { height: clamp(50px, 8vh, 80px); }
 
         .shield-text { 
-            font-size: 9px; 
+            font-size: clamp(7px, 0.7vw, 9px); 
             text-transform: uppercase; 
             font-weight: bold; 
             color: #374151; 
             line-height: 1.3;
-            text-align: left;
         }
 
-        .main-title { font-size: 18px; font-weight: bold; margin-bottom: 5px; color: #000; }
-        .date-text { width: 100%; max-width: 900px; text-align: right; font-size: 10px; margin-bottom: 15px; }
+        .main-title { font-size: clamp(16px, 1.8vw, 22px); font-weight: bold; margin-bottom: 5px; }
+        .date-text { width: 100%; max-width: 900px; text-align: right; font-size: clamp(8px, 0.8vw, 10px); margin-bottom: 1.5vh; }
 
         .student-section {
             width: 100%;
             max-width: 900px;
             display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: clamp(10px, 1.5vw, 20px);
+            margin-bottom: 2vh;
         }
 
         .photo-box { 
             border: 2px solid black; 
-            padding: 0; 
-            background-color: white;
-            display: flex;
-            width: 114px; 
-            height: 144px; 
+            width: clamp(80px, 10vw, 114px); 
+            height: clamp(100px, 13vw, 144px); 
         }
         
-        .photo-box img { 
-            width: 110px; 
-            height: 140px; 
-            object-fit: cover; 
-            display: block;
-        }
+        .photo-box img { width: 100%; height: 100%; object-fit: cover; }
 
         .info-details { 
             display: flex; 
@@ -193,34 +172,23 @@
             flex: 1; 
         }
 
-        .info-datos {
-            margin-bottom: -60px;
-            width: 230px;
-        }
-        
-        .info-row { 
-            display: flex; 
-            margin-bottom: -1px; 
-            width: 100%; 
-        }
+        .info-datos { width: 100%; max-width: 250px; margin-bottom: 10px; }
+        .info-row { display: flex; margin-bottom: -1px; width: 100%; }
         
         .info-label {
             background-color: var(--azul-unam);
             color: white;
             padding: 3px 5px;
-            width: 70px;
+            width: clamp(50px, 6vw, 75px);
             border: 1px solid black;
-            font-size: 9px;
-            display: flex;
-            align-items: center;
+            font-size: clamp(7px, 0.7vw, 9px);
         }
         
         .info-value {
-            background-color: white;
-            padding: 4px 8px;
             border: 1px solid black;
             flex: 1;
-            font-size: 11px;
+            font-size: clamp(8px, 0.8vw, 11px);
+            padding: 4px 8px;
             white-space: nowrap;
         }
 
@@ -234,42 +202,44 @@
         .eco-btn {
             background-color: var(--azul-claro);
             color: white;
-            padding: 5px 20px;
+            padding: 5px 15px;
             border-radius: 8px 8px 0 0;
-            font-weight: bold;
             border: 1px solid black;
             border-bottom: none;
+            font-size: clamp(8px, 0.8vw, 10px);
             cursor: pointer;
-            font-size: 10px;
-            margin-left: 400px; 
-            margin-bottom: -20px;
         }
 
-        .table-container { width: 100%; max-width: 900px; overflow-x: auto; }
+        /* --- TABLA RESPONSIVA --- */
+        .table-container { 
+            width: 100%; 
+            max-width: 900px; 
+            overflow-x: auto; 
+        }
+        
         table {
             width: 100%;
             border-collapse: collapse;
             border: 1px solid black;
-            text-align: center;
-            font-size: 9px;
+            min-width: 600px; 
+            font-size: clamp(8px, 0.8vw, 10px);
         }
+        
         thead tr { background-color: var(--azul-claro); color: white; }
-        th, td { border: 1px solid black; padding: 5px; }
-        .level-row { background-color: #bfdbfe; font-weight: bold; }
-        .description-row { background-color: #f3f4f6; text-align: left; }
+        th, td { border: 1px solid black; padding: clamp(3px, 0.5vw, 6px); }
 
         .controls {
             width: 100%;
             max-width: 900px;
-            margin-top: 10px;
+            margin-top: 15px;
             display: flex;
             gap: 10px;
         }
+        
         select, .consult-btn {
             border: 1px solid #9ca3af;
-            padding: 3px 10px;
-            font-size: 10px;
-            background-color: white;
+            padding: 5px 10px;
+            font-size: clamp(9px, 0.8vw, 11px);
             cursor: pointer;
         }
         .consult-btn:hover { background-color: #f9f9f9; }
@@ -332,7 +302,7 @@
                         <p>Sistema Integral de Administración Escolar</p>
                     </div>
                 </div>
-                <div class="imgdgasiare" style="display: flex; align-items: center; gap: 10px;">
+                <div class="imgdgasiare">
                     <img src="DGAESIARE.png" alt="DGAE SIARE">
                 </div>
             </div>
@@ -357,9 +327,9 @@
                     </div>
                     <div class="info-ecosistem">
                         <button class="eco-btn">Ecosistema UNAM ▼</button>
-                        <div style="text-align: center;">
-                            <span style="background: #b91c1c; color: white; font-size: 8px; padding: 2px 8px; border-radius: 99px;">¡Aviso Importante!</span><br>
-                            <img src="IMSS.png" alt="IMSS" style="height: 35px; margin-top: 4px;">
+                        <div style="text-align: center; flex-shrink: 0;">
+                            <span style="background: #b91c1c; color: white; font-size: 8px; padding: 2px 6px; border-radius: 99px;">¡Aviso!</span><br>
+                            <img src="IMSS.png" alt="IMSS" style="height: 25px; margin-top: 2px;">
                         </div>
                     </div>
                 </div>
@@ -373,7 +343,7 @@
                             <th>PLANTEL</th>
                             <th>CARRERA</th>
                             <th>TURNO</th>
-                            <th>PLAN DE ESTUDIO</th>
+                            <th>PLAN</th>
                             <th>NOMBRE DEL PLAN</th>
                             <th>GEN.</th>
                             <th>ING.</th>
@@ -384,7 +354,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="level-row"><td colspan="12">NIVEL: BACHILLERATO</td></tr>
+                        <tr style="background-color: #bfdbfe; font-weight: bold;"><td colspan="12">NIVEL: BACHILLERATO</td></tr>
                         <tr>
                             <td><input type="radio" checked></td>
                             <td>0031</td>
@@ -399,8 +369,8 @@
                             <td>2031-1</td>
                             <td>2028-1</td>
                         </tr>
-                        <tr class="description-row">
-                            <td colspan="12">INGRESO [52]: INGRESO A BACHILLERATO (ENP / CCH) (CONCURSO DE SELECCION)</td>
+                        <tr style="background-color: #f3f4f6; text-align: left;">
+                            <td colspan="12">INGRESO [52]: INGRESO A BACHILLERATO (CONCURSO DE SELECCION)</td>
                         </tr>
                     </tbody>
                 </table>
@@ -420,12 +390,9 @@
             const fecha = new Date();
             const opciones = { day: '2-digit', month: 'long', year: 'numeric' };
             let fechaFormateada = fecha.toLocaleDateString('es-ES', opciones);
-            
-            // Capitalizar la primera letra del mes
             fechaFormateada = fechaFormateada.replace(/([a-z]+)/gi, (match) => {
                 return match.charAt(0).toUpperCase() + match.substr(1);
             });
-
             document.getElementById('current-date').textContent = fechaFormateada;
         }
         actualizarFecha();
