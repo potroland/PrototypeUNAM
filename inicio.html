@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIARE UNAM - Interfaz Fiel</title>
+    <title>SIARE UNAM - Interfaz Fiel Permanente</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -20,7 +20,7 @@
             height: 100%; width: 100%;
             font-family: var(--fuente);
             background-color: var(--gris-claro);
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         /* --- HEADER --- */
@@ -30,61 +30,81 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 10%;
-            padding: 0 2%;
+            min-height: 80px;
+            padding: 10px 2%;
             border-bottom: 2px solid var(--dorado);
+            position: relative;
+            z-index: 1000;
         }
         
-        .header-left { width: 35%; display: flex; align-items: center; }
-        .header-left img { height: 75px; width: auto; margin-left: 130px; }
-        .header-center { line-height: 1.2; flex: 1; text-align: center; }
-        .header-center p { font-size: 0.65vw; font-weight: 400; margin-bottom: 2px; }
-        .header-right { display: flex; align-items: center; gap: 30px; width: 25%; justify-content: flex-start; padding-left: 20px; }
-        .logo-der { height: 60px; width: auto; }
+        .header-left { width: 25%; display: flex; align-items: center; }
+        .header-left img { height: clamp(40px, 8vw, 75px); width: auto; margin-left: clamp(0px, 5vw, 130px); flex-shrink: 0; }
+        
+        .header-center { line-height: 1.2; flex: 1; text-align: center; padding: 0 10px; }
+        /* Se asegura que el texto sea legible y no desaparezca */
+        .header-center p { font-size: clamp(7px, 1.2vw, 12px); font-weight: 400; margin-bottom: 2px; white-space: nowrap; }
+        
+        .header-right { display: flex; align-items: center; gap: clamp(5px, 2vw, 20px); width: 25%; justify-content: flex-end; }
+        .logo-der { height: clamp(30px, 6vw, 60px); width: auto; flex-shrink: 0; }
 
         /* --- BARRA DE USUARIO --- */
         .user-bar {
             background-color: var(--azul-nav);
             color: white;
-            height: 3%;
+            min-height: 30px;
             display: flex;
             align-items: center;
-            padding: 0 2%;
-            font-size: 0.8vw; 
-            gap: 1.0vw;
+            padding: 5px 2%;
+            font-size: clamp(10px, 1.5vw, 14px); 
+            gap: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            /* IMPORTANTE: Si la pantalla es muy chica, permite scroll lateral para ver el nombre */
+            overflow-x: auto;
+            white-space: nowrap;
         }
-        .user-icons { display: flex; gap: 1vw; align-items: center; font-size: 0.8vw; }
-        .user-custom-icon { height: 1.0vw; width: auto; filter: brightness(0) invert(1); }
+        .user-icons { display: flex; gap: 15px; align-items: center; flex-shrink: 0; }
+        .user-custom-icon { height: 16px; width: auto; filter: brightness(0) invert(1); }
+
+        /* --- BOTÓN MENÚ MÓVIL --- */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
 
         /* --- CUERPO --- */
-        .wrapper { display: flex; height: 87%; }
+        .wrapper { display: flex; min-height: calc(100vh - 110px); position: relative; }
 
         aside {
-            width: 12%; 
+            width: 250px;
             background-color: #e0e0e0;
             border-right: 1px solid #bbb;
-            padding: 0.8vw 0.5vw;
+            padding: 20px 10px;
             display: flex;
             flex-direction: column;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
         }
 
-        /* --- AJUSTE UNAM-SIDE (POSICIÓN Y TAMAÑO) --- */
         .unam-side { 
             flex-grow: 1; 
             display: flex;
             align-items: center; 
             justify-content: center;
-            /* Aseguramos que el contenido que sube no se oculte */
-            overflow: visible; 
+            margin-top: 50px;
         }
 
         .unam-side img {
-            width: 110%; 
+            width: 80%; 
             max-width: 160px; 
             height: auto;
             opacity: 0.9;
-            /* Movemos la imagen 50px hacia arriba */
-            transform: translateY(-100px); 
         }
 
         .menu-link {
@@ -92,9 +112,9 @@
             align-items: center;
             text-decoration: none;
             color: #000;
-            font-size: 0.7vw; 
+            font-size: 13px; 
             font-weight: 700;
-            padding: 0.15vw 0;
+            padding: 8px 0;
             cursor: pointer;
         }
 
@@ -102,11 +122,10 @@
             display: block;
             text-decoration: none;
             color: #000;
-            font-size: 0.65vw; 
+            font-size: 12px; 
             font-weight: 400;
-            padding: 0.15vw 0;
+            padding: 6px 0 6px 13px;
             cursor: pointer;
-            padding-left: 13px;
         }
 
         .triangle {
@@ -115,13 +134,11 @@
             border-bottom: 3px solid transparent;
             border-left: 5px solid var(--dorado);
             margin-right: 8px;
-            transition: transform 0.2s;
         }
-        .active .triangle { transform: rotate(90deg); }
 
-        #submenu-trayectoria { display: none; list-style: none; padding-left: 18px; margin-bottom: 3px; }
+        #submenu-trayectoria { display: none; list-style: none; padding-left: 18px; }
         #submenu-trayectoria.show { display: block; }
-        .submenu-link { text-decoration: none; color: #333; font-size: 0.65vw; font-weight: 600; display: block; padding: 1px 0; }
+        .submenu-link { text-decoration: none; color: #333; font-size: 12px; font-weight: 600; display: block; padding: 5px 0; }
 
         /* --- MAIN --- */
         main {
@@ -130,26 +147,39 @@
             display: flex; 
             justify-content: center; 
             align-items: flex-start; 
-            padding-top: 5vh; 
+            padding: 40px 20px; 
             background-image: url('logoUnam.png'); 
             background-repeat: no-repeat; 
             background-position: center;
-            background-size: 30%; 
+            background-size: contain; 
             background-blend-mode: soft-light;
         }
 
-        .banner-image-container {
-            width: 80%; 
-            max-width: 700px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border: 1px solid #ccc;
-            line-height: 0;
+        /* --- MEDIA QUERIES --- */
+        @media (max-width: 1024px) {
+            aside { width: 200px; }
+            .header-left img { margin-left: 20px; }
         }
 
-        .banner-image-container img {
-            width: 100%;
-            height: auto;
-            display: block;
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; } 
+            
+            aside {
+                position: absolute;
+                left: 0; top: 0; bottom: 0;
+                z-index: 100;
+                transform: translateX(-100%);
+                width: 250px;
+            }
+
+            aside.open { transform: translateX(0); box-shadow: 5px 0 15px rgba(0,0,0,0.3); }
+        }
+
+        /* AJUSTES PARA QUE NADA DESAPAREZCA EN MÓVILES EXTREMOS */
+        @media (max-width: 480px) {
+            .header-center p { font-size: 6px; } /* Texto muy pequeño pero presente */
+            .header-right { gap: 5px; }
+            .logo-der { height: 25px; }
         }
     </style>
 </head>
@@ -157,6 +187,7 @@
 
     <header>
         <div class="header-left">
+            <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
             <img src="logoUnam.png" alt="Escudo UNAM">
         </div>
         <div class="header-center">
@@ -174,7 +205,7 @@
     <div class="user-bar">
         <div class="user-icons">
             <img src="printer-svgrepo-com.svg" class="user-custom-icon" alt="Imprimir">
-            <span style="color:#fff">❮ &nbsp;&nbsp;  ❯</span>
+            <span style="color:#fff">❮ ❯</span>
             <span style="color:#ff0000">❤</span>
             <img src="user-svgrepo-com.svg" class="user-custom-icon" alt="Usuario">
         </div>
@@ -182,7 +213,7 @@
     </div>
 
     <div class="wrapper">
-        <aside>
+        <aside id="sidebar">
             <nav>
                 <div onclick="toggleSubmenu(this)">
                     <div class="menu-link">
@@ -204,7 +235,7 @@
             </div>
         </aside>
 
-        <main>
+        <main onclick="closeSidebar()">
             <div class="banner-image-container">
                 <img src="tu-imagen-banner.png" alt="Banner Informativo UNAM">
             </div>
@@ -216,6 +247,14 @@
             const submenu = document.getElementById('submenu-trayectoria');
             submenu.classList.toggle('show');
             element.classList.toggle('active');
+        }
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+        }
+
+        function closeSidebar() {
+            document.getElementById('sidebar').classList.remove('open');
         }
     </script>
 </body>
