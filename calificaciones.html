@@ -12,7 +12,6 @@
             --dorado: #d4af37;
             --gris-claro: #f0f0f0;
             --fuente: 'Montserrat', sans-serif;
-            --azul-unam-light: #003366;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,58 +30,65 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 10%;
-            padding: 0 2%;
+            min-height: 10%;
+            padding: 10px 2%;
             border-bottom: 2px solid var(--dorado);
         }
         
-        .header-left { width: 35%; display: flex; align-items: center; }
-        .header-left img { height: 75px; width: auto; margin-left: 130px; }
-        .header-center { line-height: 1.2; flex: 1; text-align: center; }
-        .header-center p { font-size: 0.65vw; font-weight: 400; margin-bottom: 2px; }
-        .header-right { display: flex; align-items: center; gap: 30px; width: 25%; justify-content: flex-start; padding-left: 20px; }
-        .logo-der { height: 60px; width: auto; }
+        .header-left { width: 20%; display: flex; align-items: center; }
+        .header-left img { height: 60px; width: auto; }
+        .header-center { line-height: 1.2; flex: 1; text-align: center; padding: 5px; }
+        .header-center p { font-size: clamp(8px, 0.65vw, 12px); font-weight: 400; margin-bottom: 2px; }
+        .header-right { display: flex; align-items: center; gap: 15px; width: 20%; justify-content: flex-end; }
+        .logo-der { height: clamp(30px, 4vw, 50px); width: auto; }
 
         /* --- BARRA DE USUARIO --- */
         .user-bar {
             background-color: var(--azul-nav);
             color: white;
-            height: 3%;
+            min-height: 30px;
             display: flex;
             align-items: center;
-            padding: 0 2%;
-            font-size: 0.8vw; 
+            padding: 5px 2%;
+            font-size: clamp(10px, 0.8vw, 14px); 
             gap: 1.0vw;
         }
-        .user-icons { display: flex; gap: 1vw; align-items: center; font-size: 0.8vw; }
-        .user-custom-icon { height: 1.0vw; width: auto; filter: brightness(0) invert(1); }
+        .user-icons { display: flex; gap: 1vw; align-items: center; }
+        .user-custom-icon { height: 15px; width: auto; filter: brightness(0) invert(1); }
 
         /* --- CUERPO --- */
-        .wrapper { display: flex; height: 87%; }
-
-        aside {
-            width: 12%; 
-            background-color: #e0e0e0;
-            border-right: 1px solid #bbb;
-            padding: 0.8vw 0.5vw;
-            display: flex;
-            flex-direction: column;
+        .wrapper { 
+            display: flex; 
+            flex-direction: row;
+            height: calc(100vh - 10% - 30px); 
+            width: 100%;
         }
 
-        .unam-side { 
-            flex-grow: 1; 
+        aside {
+            width: 180px;
+            flex-shrink: 0;
+            background-color: #e0e0e0;
+            border-right: 1px solid #bbb;
+            padding: 15px 10px;
             display: flex;
-            align-items: center; 
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        /* AJUSTE PARA CENTRADO VERTICAL */
+        .unam-side { 
+            flex-grow: 1; /* Ocupa el espacio disponible */
+            display: flex;
+            align-items: center; /* Centra horizontalmente la imagen */
             justify-content: center;
-            overflow: visible; 
+            margin: auto 0; /* Centra verticalmente en el espacio sobrante */
         }
 
         .unam-side img {
-            width: 110%; 
-            max-width: 160px; 
+            width: 100%; 
+            max-width: 120px; 
             height: auto;
             opacity: 0.9;
-            transform: translateY(-100px); 
         }
 
         .menu-link {
@@ -90,9 +96,9 @@
             align-items: center;
             text-decoration: none;
             color: #000;
-            font-size: 0.7vw; 
+            font-size: clamp(10px, 0.75vw, 12px); 
             font-weight: 700;
-            padding: 0.15vw 0;
+            padding: 8px 0;
             cursor: pointer;
         }
 
@@ -100,11 +106,10 @@
             display: block;
             text-decoration: none;
             color: #000;
-            font-size: 0.65vw; 
+            font-size: clamp(9px, 0.7vw, 11px); 
             font-weight: 400;
-            padding: 0.15vw 0;
+            padding: 5px 0 5px 13px;
             cursor: pointer;
-            padding-left: 13px;
         }
 
         .triangle {
@@ -115,88 +120,102 @@
             margin-right: 8px;
         }
 
-        /* --- MAIN --- */
+        /* --- CONTENIDO PRINCIPAL --- */
         main {
             flex: 1;
             background: #fff;
-            padding: 15px; 
+            padding: 10px; 
             overflow-y: auto;
             font-family: 'Roboto Condensed', sans-serif;
         }
 
-        /* --- DOCUMENTO --- */
         .document-container { 
-            max-width: 700px; 
-            min-height: 900px; 
+            max-width: 850px; 
             margin: 10px auto; 
             color: #000; 
             padding: 20px;            
             background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
 
-        /* --- MARCO ESPECÍFICO --- */
         .info-border-wrapper {
             border: 1px solid black;
             padding: 10px;
         }
 
-        .doc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .doc-header .shield { height: 80px; }
-        .doc-header-text { font-size: 9px; text-transform: uppercase; font-weight: bold; color: #374151; line-height: 1.3; }
-        .doc-header-right { display: flex; gap: 12px; align-items: center; }
-        .doc-header-right .text-blue { color: #1e40af; font-weight: bold; font-size: 14px; text-align: right; line-height: 1; }
+        .doc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; gap: 10px;}
+        .doc-header .shield { height: clamp(40px, 8vw, 70px); }
+        .doc-header-text { font-size: clamp(7px, 1.2vw, 10px); text-transform: uppercase; font-weight: bold; color: #374151; line-height: 1.3; flex: 1; }
+        .doc-header-right { display: flex; gap: 8px; align-items: center; }
+        .doc-header-right .text-blue { color: #1e40af; font-weight: bold; font-size: clamp(10px, 1.5vw, 14px); text-align: right; line-height: 1; }
 
         .main-title-box { text-align: center; margin-bottom: 12px; }
-        .main-title-box h3 { font-size: 18px; font-weight: bold; color: #7f1d1d; }
+        .main-title-box h3 { font-size: clamp(16px, 3vw, 22px); font-weight: bold; color: #7f1d1d; }
         .main-title-box p { color: #6b7280; font-style: italic; font-size: 11px; }
 
         .current-date { text-align: right; font-weight: bold; margin-bottom: 8px; font-size: 11px; }
 
         .student-info-box { padding: 4px 0; margin-bottom: 10px; font-size: 10px; }
-        .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; margin-bottom: 6px; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 6px; }
         .font-bold { font-weight: bold; }
 
         .credits-summary {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr 0.5fr; 
+            grid-template-columns: repeat(3, 1fr); 
             gap: 15px;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             font-size: 10px;
         }
         .underline { text-decoration: underline; }
-        .credit-row { display: flex; justify-content: space-between; margin-bottom: 2px; }
+        .credit-row { display: flex; justify-content: space-between; margin-bottom: 2px; gap: 10px; }
         .border-t { border-top: 1px solid black; padding-top: 2px; }
+
+        /* --- TABLA --- */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 15px;
+            border: 1px solid black;
+        }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 8.5px; 
-            border: 1px solid black; 
+            font-size: 9px; 
+            min-width: 800px;
         }
         thead th {
             background-color: var(--azul-nav);
             color: white;
             text-transform: uppercase;
             font-weight: bold;
-            padding: 4px 2px;
+            padding: 6px 3px;
             border: 0.5px solid white;
         }
-        tbody td { border: 0.5px solid black; padding: 3px; text-align: center; }
+        tbody td { border: 0.5px solid black; padding: 4px; text-align: center; }
         .semester-header { background-color: #dbeafe; font-weight: bold; text-align: center; font-size: 10px; }
         .text-left { text-align: left; padding-left: 5px; }
 
         .disclaimer {
-            margin-top: 40px;
+            margin-top: 30px;
             text-align: center;
             font-style: italic;
             font-weight: bold;
-            font-size: 11px;
-            line-height: 1.3;
+            font-size: 10px;
+            line-height: 1.4;
             color: #000;
         }
 
         #submenu-trayectoria { display: block; list-style: none; padding-left: 18px; }
-        .submenu-link { text-decoration: none; color: #333; font-size: 0.65vw; font-weight: 600; display: block; padding: 1px 0; }
+        .submenu-link { text-decoration: none; color: #333; font-size: clamp(9px, 0.7vw, 11px); font-weight: 600; display: block; padding: 2px 0; }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; text-align: center; }
+            .header-left, .header-right { width: 100%; justify-content: center; margin: 5px 0; }
+            aside { width: 150px; }
+            .unam-side { display: none; }
+            .credits-summary { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -220,7 +239,7 @@
     <div class="user-bar">
         <div class="user-icons">
             <img src="printer-svgrepo-com.svg" class="user-custom-icon" alt="Imprimir">
-            <span style="color:#fff">❮ &nbsp;&nbsp; ❯</span>
+            <span style="color:#fff">&#10094; &nbsp;&nbsp; &#10095;</span>
             <span style="color:#ff0000">❤</span>
             <img src="user-svgrepo-com.svg" class="user-custom-icon" alt="Usuario">
         </div>
@@ -239,7 +258,7 @@
                 <div class="menu-link"><div class="triangle"></div> Trámites Escolares</div>
                 <div class="menu-link"><div class="triangle"></div> Seguridad</div>
                 <div class="menu-link"><div class="triangle"></div> Elecciones</div>
-                <div class="menu-link-secondary" style="margin-top: 5px;">Imprimir</div>
+                <div class="menu-link-secondary" style="margin-top: 15px;">Imprimir</div>
                 <div class="menu-link-secondary">Cerrar Sesión</div>
             </nav>
 
@@ -264,7 +283,7 @@
                             <p>DGAE</p>
                             <p>UNAM®</p>
                         </div>
-                        <img src="DGAESIARE.png" alt="SIAE" style="height: 50px; width: auto;">
+                        <img src="DGAESIARE.png" alt="SIAE" style="height: 40px; width: auto;">
                     </div>
                 </div>
 
@@ -280,7 +299,7 @@
                         <div class="info-grid">
                             <div><span class="font-bold">NÚMERO DE CUENTA:</span> 325220204</div>
                             <div><span class="font-bold">NOMBRE:</span> TORRES NAVA MIRANDA</div>
-                            <div style="text-align: right;"><span class="font-bold">AÑO DE INGRESO:</span> 2025</div>
+                            <div><span class="font-bold">AÑO DE INGRESO:</span> 2025</div>
                         </div>
                         <div style="margin-bottom: 6px;"><span class="font-bold">PLANTEL:</span> 0031 C.C.H. PLANTEL AZCAPOTZALCO</div>
                         <div><span class="font-bold">CARRERA:</span> 502 PLAN DE ESTUDIOS: 2273 - CCH BACHILLERATO</div>
@@ -315,89 +334,91 @@
                     </div>
                 </div>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>CLAVE PLANTEL</th>
-                            <th>CLAVE ASIGNATURA</th>
-                            <th>CREDITOS</th>
-                            <th>TIPO</th>
-                            <th>NOMBRE DE LA ASIGNATURA</th>
-                            <th>CALIFICACION</th>
-                            <th>TIPO DE EXAMEN</th>
-                            <th>PERIODO</th>
-                            <th>FOLIO ACTA</th>
-                            <th>GRUPO</th>
-                            <th>ORD</th>
-                            <th>EXT</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="semester-header">
-                            <td colspan="12">PRIMER SEMESTRE</td>
-                        </tr>
-                        <tr>
-                            <td>0031</td><td>1101</td><td>10</td><td>OBL</td><td class="text-left">MATEMATICAS I (ALGEB-GEOM)</td><td class="font-bold">8</td><td>ORD</td><td>2025-1</td><td>4873401</td><td>115B</td><td>1</td><td></td>
-                        </tr>
-                        <tr>
-                            <td>0031</td><td>1102</td><td>08</td><td>OBL</td><td class="text-left">TALLER DE COMPUTO</td><td class="font-bold">9</td><td>ORD</td><td>2025-1</td><td>4873403</td><td>115B</td><td>1</td><td></td>
-                        </tr>
-                        <tr>
-                            <td>0031</td><td>1103</td><td>10</td><td>OBL</td><td class="text-left">QUIMICA I</td><td class="font-bold">8</td><td>ORD</td><td>2025-1</td><td>4873405</td><td>115B</td><td>1</td><td></td>
-                        </tr>
-                        <tr>
-                            <td>0031</td><td>1104</td><td>08</td><td>OBL</td><td class="text-left">HIST.UNIV.MODERNA Y CONTEM I</td><td class="font-bold">10</td><td>ORD</td><td>2025-1</td><td>4871027</td><td>0115</td><td>1</td><td></td>
-                        </tr>
-                        <tr>
-                            <td>0031</td><td>1105</td><td>12</td><td>OBL</td><td class="text-left">TALL.LECT.REDAC.INIC.DOC. I</td><td class="font-bold">8</td><td>ORD</td><td>2025-1</td><td>4871030</td><td>0115</td><td>1</td><td></td>
-                        </tr>
-                        <tr>
-                            <td>0031</td><td>1107</td><td>08</td><td>OBL</td><td class="text-left">INGLES I</td><td class="font-bold">7</td><td>ORD</td><td>2025-1</td><td>4873407</td><td>115B</td><td>1</td><td></td>
-                        </tr>
-                        <tr>
-                            <td>0031</td><td>8000</td><td>00</td><td>OBL</td><td class="text-left">IGUALDAD DE GENERO</td><td class="font-bold">AC</td><td>ORD</td><td>2025-2</td><td>4947455</td><td>0215</td><td>1</td><td></td>
-                        </tr>
-                        <tr class="semester-header">
-                            <td colspan="12">SEGUNDO SEMESTRE</td>
-                        </tr>
-                        <tr>
-                            <td>0031</td><td>1201</td><td>10</td><td>OBL</td><td class="text-left">MATEMATICAS II (ALGEB-GEOM)</td><td class="font-bold">6</td><td>ORD</td><td>2025-2</td><td>4949763</td><td>215B</td><td>1</td><td></td>
-                        </tr>
-                        <tr>
-                            <td>0031</td><td>1203</td><td>10</td><td>OBL</td><td class="text-left">QUIMICA II</td><td class="font-bold">6</td><td>ORD</td><td>2025-2</td><td>4949765</td><td>215B</td><td>1</td><td></td>
-                        </tr>
-                        <tr>
-                            <td>0031</td><td>1204</td><td>08</td><td>OBL</td><td class="text-left">HIST.UNIV.MODER-CONTEMP. II</td><td class="font-bold">5</td><td>ORD</td><td>2025-2</td><td>4947449</td><td>0215</td><td>1</td><td></td>
-                        </tr>
-                        <tr>
-                            <td>0031</td><td>1205</td><td>12</td><td>OBL</td><td class="text-left">TALL.LECT.REDAC.INIC.DOC.II</td><td class="font-bold">8</td><td>ORD</td><td>2025-2</td><td>4947452</td><td>0215</td><td>1</td><td></td>
-                        </tr>
-                        <tr>
-                            <td>0031</td><td>1207</td><td>08</td><td>OBL</td><td class="text-left">INGLES II</td><td class="font-bold">6</td><td>ORD</td><td>2025-2</td><td>4949767</td><td>215B</td><td>1</td><td></td>
-                        </tr>
-                        <tr class="semester-header">
-                            <td colspan="12">TERCER SEMESTRE</td>
-                        </tr>
-                        <tr>
-                            <td>0031</td><td>1301</td><td>10</td><td>OBL</td><td class="text-left">MATEMATICAS III (ALGEB-GEOM)</td><td class="font-bold">8</td><td>ORD</td><td>2026-1</td><td>5102341</td><td>315B</td><td>1</td><td></td>
-                        </tr>
-                        <tr>
-                            <td>0031</td><td>1302</td><td>10</td><td>OBL</td><td class="text-left">BIOLOGIA I</td><td class="font-bold">10</td><td>ORD</td><td>2026-1</td><td>5102342</td><td>315B</td><td>1</td><td></td>
-                        </tr>
-                        <tr>
-                            <td>0031</td><td>1303</td><td>10</td><td>OBL</td><td class="text-left">FISICA I</td><td class="font-bold">10</td><td>ORD</td><td>2026-1</td><td>5102343</td><td>315B</td><td>1</td><td></td>
-                        </tr>
-                        <tr>
-                            <td>0031</td><td>1304</td><td>08</td><td>OBL</td><td class="text-left">HISTORIA DE MEXICO</td><td class="font-bold">7</td><td>ORD</td><td>2026-1</td><td>5102344</td><td>315B</td><td>1</td><td></td>
-                        </tr>
-                        <tr>
-                            <td>0031</td><td>1305</td><td>08</td><td>OBL</td><td class="text-left">TALLER</td><td class="font-bold">10</td><td>ORD</td><td>2026-1</td><td>5102345</td><td>315B</td><td>1</td><td></td>
-                        </tr>
-                        <tr>
-                            <td>0031</td><td>1307</td><td>08</td><td>OBL</td><td class="text-left">INGLES III</td><td class="font-bold">8</td><td>ORD</td><td>2026-1</td><td>5102346</td><td>315B</td><td>1</td><td></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>CLAVE PLANTEL</th>
+                                <th>CLAVE ASIG.</th>
+                                <th>CRED.</th>
+                                <th>TIPO</th>
+                                <th>NOMBRE DE LA ASIGNATURA</th>
+                                <th>CALIF.</th>
+                                <th>TIPO EXAM.</th>
+                                <th>PERIODO</th>
+                                <th>FOLIO</th>
+                                <th>GRUPO</th>
+                                <th>ORD</th>
+                                <th>EXT</th>
+                            </tr>
+                        </thead>
+<tbody>
+                            <tr class="semester-header">
+                                <td colspan="12">PRIMER SEMESTRE</td>
+                            </tr>
+                            <tr>
+                                <td>0031</td><td>1101</td><td>10</td><td>OBL</td><td class="text-left">MATEMATICAS I (ALGEB-GEOM)</td><td class="font-bold">8</td><td>ORD</td><td>2025-1</td><td>4873401</td><td>115B</td><td>1</td><td></td>
+                            </tr>
+                            <tr>
+                                <td>0031</td><td>1102</td><td>08</td><td>OBL</td><td class="text-left">TALLER DE COMPUTO</td><td class="font-bold">9</td><td>ORD</td><td>2025-1</td><td>4873403</td><td>115B</td><td>1</td><td></td>
+                            </tr>
+                            <tr>
+                                <td>0031</td><td>1103</td><td>10</td><td>OBL</td><td class="text-left">QUIMICA I</td><td class="font-bold">8</td><td>ORD</td><td>2025-1</td><td>4873405</td><td>115B</td><td>1</td><td></td>
+                            </tr>
+                            <tr>
+                                <td>0031</td><td>1104</td><td>08</td><td>OBL</td><td class="text-left">HIST.UNIV.MODERNA Y CONTEM I</td><td class="font-bold">10</td><td>ORD</td><td>2025-1</td><td>4871027</td><td>0115</td><td>1</td><td></td>
+                            </tr>
+                            <tr>
+                                <td>0031</td><td>1105</td><td>12</td><td>OBL</td><td class="text-left">TALL.LECT.REDAC.INIC.DOC. I</td><td class="font-bold">8</td><td>ORD</td><td>2025-1</td><td>4871030</td><td>0115</td><td>1</td><td></td>
+                            </tr>
+                            <tr>
+                                <td>0031</td><td>1107</td><td>08</td><td>OBL</td><td class="text-left">INGLES I</td><td class="font-bold">7</td><td>ORD</td><td>2025-1</td><td>4873407</td><td>115B</td><td>1</td><td></td>
+                            </tr>
+                            <tr>
+                                <td>0031</td><td>8000</td><td>00</td><td>OBL</td><td class="text-left">IGUALDAD DE GENERO</td><td class="font-bold">AC</td><td>ORD</td><td>2025-2</td><td>4947455</td><td>0215</td><td>1</td><td></td>
+                            </tr>
+                            <tr class="semester-header">
+                                <td colspan="12">SEGUNDO SEMESTRE</td>
+                            </tr>
+                            <tr>
+                                <td>0031</td><td>1201</td><td>10</td><td>OBL</td><td class="text-left">MATEMATICAS II (ALGEB-GEOM)</td><td class="font-bold">6</td><td>ORD</td><td>2025-2</td><td>4949763</td><td>215B</td><td>1</td><td></td>
+                            </tr>
+                            <tr>
+                                <td>0031</td><td>1203</td><td>10</td><td>OBL</td><td class="text-left">QUIMICA II</td><td class="font-bold">6</td><td>ORD</td><td>2025-2</td><td>4949765</td><td>215B</td><td>1</td><td></td>
+                            </tr>
+                            <tr>
+                                <td>0031</td><td>1204</td><td>08</td><td>OBL</td><td class="text-left">HIST.UNIV.MODER-CONTEMP. II</td><td class="font-bold">5</td><td>ORD</td><td>2025-2</td><td>4947449</td><td>0215</td><td>1</td><td></td>
+                            </tr>
+                            <tr>
+                                <td>0031</td><td>1205</td><td>12</td><td>OBL</td><td class="text-left">TALL.LECT.REDAC.INIC.DOC.II</td><td class="font-bold">8</td><td>ORD</td><td>2025-2</td><td>4947452</td><td>0215</td><td>1</td><td></td>
+                            </tr>
+                            <tr>
+                                <td>0031</td><td>1207</td><td>08</td><td>OBL</td><td class="text-left">INGLES II</td><td class="font-bold">6</td><td>ORD</td><td>2025-2</td><td>4949767</td><td>215B</td><td>1</td><td></td>
+                            </tr>
+                            <tr class="semester-header">
+                                <td colspan="12">TERCER SEMESTRE</td>
+                            </tr>
+                            <tr>
+                                <td>0031</td><td>1301</td><td>10</td><td>OBL</td><td class="text-left">MATEMATICAS III (ALGEB-GEOM)</td><td class="font-bold">8</td><td>ORD</td><td>2026-1</td><td>5102341</td><td>315B</td><td>1</td><td></td>
+                            </tr>
+                            <tr>
+                                <td>0031</td><td>1302</td><td>10</td><td>OBL</td><td class="text-left">BIOLOGIA I</td><td class="font-bold">10</td><td>ORD</td><td>2026-1</td><td>5102342</td><td>315B</td><td>1</td><td></td>
+                            </tr>
+                            <tr>
+                                <td>0031</td><td>1303</td><td>10</td><td>OBL</td><td class="text-left">FISICA I</td><td class="font-bold">10</td><td>ORD</td><td>2026-1</td><td>5102343</td><td>315B</td><td>1</td><td></td>
+                            </tr>
+                            <tr>
+                                <td>0031</td><td>1304</td><td>08</td><td>OBL</td><td class="text-left">HISTORIA DE MEXICO</td><td class="font-bold">7</td><td>ORD</td><td>2026-1</td><td>5102344</td><td>315B</td><td>1</td><td></td>
+                            </tr>
+                            <tr>
+                                <td>0031</td><td>1305</td><td>08</td><td>OBL</td><td class="text-left">TALL.LECT.REDAC.INIC.DOC.III</td><td class="font-bold">10</td><td>ORD</td><td>2026-1</td><td>5102345</td><td>315B</td><td>1</td><td></td>
+                            </tr>
+                            <tr>
+                                <td>0031</td><td>1307</td><td>08</td><td>OBL</td><td class="text-left">INGLES III</td><td class="font-bold">8</td><td>ORD</td><td>2026-1</td><td>5102346</td><td>315B</td><td>1</td><td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <div class="disclaimer">
                     <p>"Esta Historia Académica muestra el registro de las asignaturas inscritas por el alumno o la alumna, así como las calificaciones obtenidas en éstas.</p>
